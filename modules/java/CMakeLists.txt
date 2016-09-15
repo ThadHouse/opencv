@@ -400,6 +400,10 @@ set_target_properties(${the_module} PROPERTIES
     LINK_INTERFACE_LIBRARIES ""
     )
 
+if(APPLE)
+  set_target_properties(${the_module} PROPERTIES SUFFIX ".dylib")
+endif()
+
 if(ANDROID)
   ocv_target_link_libraries(${the_module} jnigraphics) # for Mat <=> Bitmap converters
   ocv_target_link_libraries(${the_module} LINK_INTERFACE_LIBRARIES ${OPENCV_LINKER_LIBS} jnigraphics)
